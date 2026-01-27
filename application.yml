@@ -46,19 +46,18 @@ lavalink:
     soundcloudSearchEnabled: true
     gc-warnings: true
 
-  plugins:
-    youtube:
-      enabled: true
-      allowSearch: true
-      allowDirectVideoIds: true
-      allowDirectPlaylistIds: true
-      clients:
-        - MUSIC
-        - WEB
-        - ANDROID_TESTSUITE
-        - TVHTML5EMBEDDED
-
 plugins:
+  youtube:
+    enabled: true
+    allowSearch: true
+    allowDirectVideoIds: true
+    allowDirectPlaylistIds: true
+    clients:
+      - MUSIC
+      - WEB
+      - ANDROID_TESTSUITE
+      - TVHTML5EMBEDDED
+
   lavasrc:
     providers:
       - "ytsearch:\"%ISRC%\""
