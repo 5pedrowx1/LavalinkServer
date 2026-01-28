@@ -10,7 +10,7 @@ lavalink:
   server:
     password: "${LAVALINK_PASSWORD:youshallnotpass}"
     sources:
-      youtube: false
+      youtube: true
       bandcamp: true
       soundcloud: true
       twitch: true
@@ -48,20 +48,13 @@ plugins:
     allowSearch: true
     allowDirectVideoIds: true
     allowDirectPlaylistIds: true
+    # Use only ANDROID clients which are less likely to be blocked
     clients:
-      - MUSIC
+      - ANDROID_TESTSUITE
+      - ANDROID_LITE
       - ANDROID_MUSIC
-      - WEB
-      - TVHTML5EMBEDDED
-
-metrics:
-  prometheus:
-    enabled: false
-    endpoint: /metrics
-
-sentry:
-  dsn: ""
-  environment: ""
+      - IOS
+      - MEDIA_CONNECT
 
 logging:
   file:
