@@ -4,13 +4,14 @@ server:
 
 lavalink:
   plugins:
-    - dependency: "dev.lavalink.youtube:youtube-plugin:1.7.2"
+    # Use the latest youtube-plugin version
+    - dependency: "dev.lavalink.youtube:youtube-plugin:1.11.3"
       repository: "https://maven.lavalink.dev/releases"
 
   server:
     password: "${LAVALINK_PASSWORD:youshallnotpass}"
     sources:
-      youtube: true
+      youtube: false  # Disable built-in youtube, use plugin instead
       bandcamp: true
       soundcloud: true
       twitch: true
@@ -48,11 +49,21 @@ plugins:
     allowSearch: true
     allowDirectVideoIds: true
     allowDirectPlaylistIds: true
+    # Client priority - try different clients if one fails
     clients:
       - MUSIC
-      - WEB
+      - ANDROID_MUSIC
       - ANDROID_TESTSUITE
+      - WEB
       - TVHTML5EMBEDDED
+    # WEB client workaround for age-restricted videos
+    WEB:
+      playback: true
+    TVHTML5EMBEDDED:
+      playback: true
+    # Rotate clients on failure
+    clientOptions:
+      rotateOnBan: true
 
 metrics:
   prometheus:
