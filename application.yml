@@ -4,13 +4,19 @@ server:
 
 lavalink:
   plugins:
-    - dependency: "dev.lavalink.youtube:youtube-plugin:1.11.3"
-      repository: "https://maven.lavalink.dev/releases"
+- dependency: "dev.lavalink.youtube:youtube-plugin:1.17.0"
+      snapshot: false
+    - dependency: "com.github.topi314.lavasearch:lavasearch-plugin:1.0.0"
+      snapshot: false
+    - dependency: "com.github.topi314.lavasrc:lavasrc-plugin:4.8.1"
+      snapshot: false
+    - dependency: "com.github.topi314.sponsorblock:sponsorblock-plugin:3.0.1"
+      snapshot: false
 
   server:
     password: "${LAVALINK_PASSWORD:youshallnotpass}"
     sources:
-      youtube: true
+      youtube: false
       bandcamp: true
       soundcloud: true
       twitch: true
@@ -33,10 +39,10 @@ lavalink:
     bufferDurationMs: 400
     frameBufferDurationMs: 5000
     opusEncodingQuality: 10
-    resamplingQuality: LOW
+    resamplingQuality: HIGH
     trackStuckThresholdMs: 10000
     useSeekGhosting: true
-    youtubePlaylistLoadLimit: 6
+    youtubePlaylistLoadLimit: 100
     playerUpdateInterval: 5
     youtubeSearchEnabled: true
     soundcloudSearchEnabled: true
@@ -48,13 +54,45 @@ plugins:
     allowSearch: true
     allowDirectVideoIds: true
     allowDirectPlaylistIds: true
-    # Use only ANDROID clients which are less likely to be blocked
     clients:
-      - ANDROID_TESTSUITE
-      - ANDROID_LITE
-      - ANDROID_MUSIC
+      - MUSIC
+      - WEB
+      - MWEB
+      - WEBEMBEDDED
+      - ANDROID
       - IOS
-      - MEDIA_CONNECT
+      - ANDROID_MUSIC
+      - ANDROID_VR
+      - TV
+    oauth:
+      enabled: true
+      refreshToken: "{REFRESHTOKEN:0}"
+lavasrc:
+    providers:
+      - "ytsearch:\"%ISRC%\""
+      - "ytsearch:%QUERY%"
+      - "scsearch:%QUERY%"
+    sources:
+      spotify: false
+      applemusic: false
+      deezer: false
+      yandexmusic: false
+      flowerytts: false
+      youtube: true
+
+sponsorblock:
+    servers:
+      - "https://sponsor.ajay.app"
+      - "https://sponsorblock.kavin.rocks"
+    categories:
+      - "sponsor"
+      - "selfpromo"
+      - "interaction"
+      - "intro"
+      - "outro"
+      - "preview"
+      - "music_offtopic"
+      - "filler"
 
 logging:
   file:
