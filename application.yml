@@ -4,7 +4,7 @@ server:
 
 lavalink:
   plugins:
-- dependency: "dev.lavalink.youtube:youtube-plugin:1.17.0"
+    - dependency: "dev.lavalink.youtube:youtube-plugin:1.17.0"
       snapshot: false
     - dependency: "com.github.topi314.lavasearch:lavasearch-plugin:1.0.0"
       snapshot: false
@@ -23,7 +23,6 @@ lavalink:
       vimeo: true
       http: true
       local: false
-
     filters:
       volume: true
       equalizer: true
@@ -35,7 +34,6 @@ lavalink:
       rotation: true
       channelMix: true
       lowPass: true
-
     bufferDurationMs: 400
     frameBufferDurationMs: 5000
     opusEncodingQuality: 10
@@ -66,8 +64,9 @@ plugins:
       - TV
     oauth:
       enabled: true
-      refreshToken: "{REFRESHTOKEN:0}"
-lavasrc:
+      refreshToken: "${YOUTUBE_REFRESH_TOKEN:}"
+
+  lavasrc:
     providers:
       - "ytsearch:\"%ISRC%\""
       - "ytsearch:%QUERY%"
@@ -80,7 +79,7 @@ lavasrc:
       flowerytts: false
       youtube: true
 
-sponsorblock:
+  sponsorblock:
     servers:
       - "https://sponsor.ajay.app"
       - "https://sponsorblock.kavin.rocks"
@@ -100,8 +99,3 @@ logging:
   level:
     root: INFO
     lavalink: INFO
-
-  logback:
-    rollingpolicy:
-      max-file-size: 10MB
-      max-history: 7
