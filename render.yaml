@@ -9,3 +9,5 @@ services:
         generateValue: true
       - key: PORT
         value: 2333
+      - key: YOUTUBE_REFRESH_TOKEN
+        sync: false
