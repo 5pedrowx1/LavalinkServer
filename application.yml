@@ -34,8 +34,8 @@ lavalink:
       rotation: true
       channelMix: true
       lowPass: true
-    bufferDurationMs: 800
-    frameBufferDurationMs: 10000
+    bufferDurationMs: 400
+    frameBufferDurationMs: 5000
     opusEncodingQuality: 10
     resamplingQuality: HIGH
     trackStuckThresholdMs: 10000
@@ -63,8 +63,9 @@ plugins:
       - ANDROID_VR
       - TV
     oauth:
-      enabled: false
-
+      enabled: true
+      refreshToken: $"{YOUTUBE_REFRESH_TOKEN}"
+      
   lavasrc:
     providers:
       - "ytsearch:\"%ISRC%\""
