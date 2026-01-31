@@ -1,13 +1,12 @@
-services:
-  - type: web
-    name: lavalink-server
-    env: docker
-    plan: free
-    healthCheckPath: /version
-    envVars:
-      - key: LAVALINK_PASSWORD
-        generateValue: true
-      - key: PORT
-        value: 2333
-      - key: YOUTUBE_REFRESH_TOKEN
-        sync: false
+{
+  "$schema": "https://railway.app/railway.schema.json",
+  "build": {
+    "builder": "DOCKERFILE",
+    "dockerfilePath": "Dockerfile"
+  },
+  "deploy": {
+    "startCommand": "java -Xmx256m -Xms128m -XX:+UseG1GC -XX:MaxGCPauseMillis=50 -jar Lavalink.jar",
+    "restartPolicyType": "ON_FAILURE",
+    "restartPolicyMaxRetries": 10
+  }
+}
