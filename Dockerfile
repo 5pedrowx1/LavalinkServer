@@ -25,5 +25,4 @@ RUN mkdir -p logs plugins
 HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
     CMD curl -f http://localhost:${PORT:-2333}/version || exit 1
 
-# Start command with proper port configuration
-CMD ["sh", "-c", "java -Xmx256m -Xms128m -XX:+UseG1GC -XX:MaxGCPauseMillis=50 -Dserver.port=${PORT:-2333} -jar Lavalink.jar"]
+CMD ["sh", "-c", "java -Xmx512m -Xms256m -XX:+UseG1GC -XX:MaxGCPauseMillis=200 -XX:+UseStringDeduplication -XX:+OptimizeStringConcat -Dserver.port=${PORT:-2333} -jar Lavalink.jar"]
