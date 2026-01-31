@@ -1,9 +1,10 @@
 server:
-  port: ${PORT:2333}
+  port: "${PORT}"
   address: 0.0.0.0
 
 lavalink:
   plugins:
+    # Try using snapshot for potential fixes
     - dependency: "dev.lavalink.youtube:youtube-plugin:1.17.0"
       snapshot: false
     - dependency: "com.github.topi314.lavasearch:lavasearch-plugin:1.0.0"
@@ -16,7 +17,7 @@ lavalink:
   server:
     password: "${LAVALINK_PASSWORD}"
     sources:
-      youtube: true
+      youtube: false
       bandcamp: true
       soundcloud: true
       twitch: true
@@ -57,6 +58,7 @@ plugins:
       - WEB
       - MWEB
       - WEBEMBEDDED
+      - ANDROID
       - IOS
       - ANDROID_MUSIC
       - ANDROID_VR
