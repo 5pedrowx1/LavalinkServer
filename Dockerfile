@@ -15,15 +15,15 @@ RUN curl -L -o Lavalink.jar \
 # Copy configuration
 COPY application.yml .
 
-# Expose port
+# Expose port (Railway will override this with $PORT)
 EXPOSE ${PORT:-2333}
 
 # Create logs directory
 RUN mkdir -p logs plugins
 
-# Health check
+# Health check (use PORT environment variable)
 HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
     CMD curl -f http://localhost:${PORT:-2333}/version || exit 1
 
-# Start command
-CMD ["java", "-Xmx256m", "-Xms128m", "-XX:+UseG1GC", "-XX:MaxGCPauseMillis=50", "-jar", "Lavalink.jar"]
+# Start command with proper port configuration
+CMD ["sh", "-c", "java -Xmx256m -Xms128m -XX:+UseG1GC -XX:MaxGCPauseMillis=50 -Dserver.port=${PORT:-2333} -jar Lavalink.jar"]
