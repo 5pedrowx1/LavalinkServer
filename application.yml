@@ -63,8 +63,8 @@ plugins:
       - ANDROID_VR
       - TV
     oauth:
-      enabled: false
-      # OAuth desabilitado - não funciona com token atual
+      enabled: true
+      refreshToken: "{YOUTUBE_REFRESH_TOKEN}:0"
 
   lavasrc:
     providers:
