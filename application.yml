@@ -64,7 +64,7 @@ plugins:
       - TV
     oauth:
       enabled: true
-      refreshToken: "{YOUTUBE_REFRESH_TOKEN}:0"
+      refreshToken: "${YOUTUBE_REFRESH_TOKEN}"
 
   lavasrc:
     providers:
