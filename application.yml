@@ -1,6 +1,12 @@
 server:
   port: ${PORT:2333}
   address: 0.0.0.0
+  undertow:
+    threads:
+      io: 4
+      worker: 400
+    buffer-size: 16384
+    direct-buffers: true
 
 lavalink:
   plugins:
@@ -34,8 +40,8 @@ lavalink:
       rotation: true
       channelMix: true
       lowPass: true
-    bufferDurationMs: 400
-    frameBufferDurationMs: 5000
+    bufferDurationMs: 800
+    frameBufferDurationMs: 10000
     opusEncodingQuality: 10
     resamplingQuality: HIGH
     trackStuckThresholdMs: 10000
@@ -63,8 +69,7 @@ plugins:
       - ANDROID_VR
       - TV
     oauth:
-      enabled: true
-      refreshToken: "${YOUTUBE_REFRESH_TOKEN}"
+      enabled: false
 
   lavasrc:
     providers:
