@@ -1,12 +1,6 @@
 server:
   port: ${PORT:2333}
   address: 0.0.0.0
-  undertow:
-    threads:
-      io: 4
-      worker: 400
-    buffer-size: 16384
-    direct-buffers: true
 
 lavalink:
   plugins:
