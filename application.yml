@@ -52,16 +52,12 @@ plugins:
     allowSearch: true
     allowDirectVideoIds: true
     allowDirectPlaylistIds: true
+    # Removido ANDROID e ANDROID_VR que estão quebrados
     clients:
       - MUSIC
       - WEB
-      - MWEB
-      - WEBEMBEDDED
-      - ANDROID
       - IOS
-      - ANDROID_MUSIC
-      - ANDROID_VR
-      - TV
+      - TV_EMBEDDED
     oauth:
       enabled: true
       refreshToken: "${YOUTUBE_REFRESH_TOKEN}"
