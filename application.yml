@@ -72,12 +72,18 @@ plugins:
       - "ytsearch:%QUERY%"
       - "scsearch:%QUERY%"
     sources:
-      spotify: false
+      spotify: true
       applemusic: false
       deezer: false
       yandexmusic: false
       flowerytts: false
       youtube: true
+    spotify:
+      clientId: "${SPOTIFY_CLIENT_ID}"
+      clientSecret: "${SPOTIFY_CLIENT_SECRET}"
+      countryCode: "PT"
+      playlistLoadLimit: 50
+      albumLoadLimit: 50
 
   sponsorblock:
     servers:
@@ -97,6 +103,7 @@ plugins:
     sources:
       - youtube
       - soundcloud
+      - spotify
 
 logging:
   file:
