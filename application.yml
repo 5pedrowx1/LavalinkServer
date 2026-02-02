@@ -1,5 +1,5 @@
 server:
-  port: "${PORT}"
+  port: ${PORT:2333}
   address: 0.0.0.0
 
 lavalink:
@@ -16,7 +16,7 @@ lavalink:
   server:
     password: "${LAVALINK_PASSWORD}"
     sources:
-      youtube: false
+      youtube: true
       bandcamp: true
       soundcloud: true
       twitch: true
@@ -45,7 +45,6 @@ lavalink:
     youtubeSearchEnabled: true
     soundcloudSearchEnabled: true
     gc-warnings: true
-    httpRequestTimeout: 30000
 
 plugins:
   youtube:
@@ -54,17 +53,17 @@ plugins:
     allowDirectVideoIds: true
     allowDirectPlaylistIds: true
     clients:
-      - ANDROID_MUSIC
       - MUSIC
       - WEB
-      - ANDROID
+      - MWEB
+      - WEBEMBEDDED
       - IOS
+      - ANDROID_MUSIC
+      - ANDROID_VR
+      - TV
     oauth:
       enabled: true
       refreshToken: "${YOUTUBE_REFRESH_TOKEN}"
-    ratelimit:
-      ipBlocks: []
-      searchTriggersFail: true
 
   lavasrc:
     providers:
@@ -104,4 +103,3 @@ logging:
   level:
     root: INFO
     lavalink: INFO
-    dev.lavalink.youtube: DEBUG
